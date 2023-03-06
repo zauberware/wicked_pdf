@@ -99,6 +99,9 @@ class WickedPdf
   end
 
   def parse_options(options)
-    OptionParser.new(binary_version).parse(options)
+    # Store reference to option parser in instance var to ensure internal temp files remain
+    # referenced for life of WickedPdf instance
+    @option_parser = OptionParser.new(binary_version)
+    @option_parser.parse(options)
   end
 end
